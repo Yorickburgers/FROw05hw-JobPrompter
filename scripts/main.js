@@ -71,27 +71,46 @@ const departments = {
     }
 }
 
-/*console.log(departments);*/
+// console.log(departments);
 
-/* Opdracht 1 */
-console.log("De afdeling Sales heeft " + departments.sales.numberOfEmployees + " medewerkers");
-console.log(" Marketing is een leuke afdeling om in te werken. " + departments.marketing.description);
-console.log("De afdeling Customer Service heeft " + departments["customer-service"].numberOfEmployees + " medewerkers");
-console.log("Sales is een uitdagende afdeling om te werken als Verkoopmanager. " + departments.sales.jobs[1].description);
+// Opdracht 1
+// console.log("De afdeling Sales heeft " + departments.sales.numberOfEmployees + " medewerkers");
+// console.log(" Marketing is een leuke afdeling om in te werken. " + departments.marketing.description);
+// console.log("De afdeling Customer Service heeft " + departments["customer-service"].numberOfEmployees + " medewerkers");
+// console.log("Sales is een uitdagende afdeling om te werken als Verkoopmanager. " + departments.sales.jobs[1].description);
 
-/* Opdracht 2 */
-const userInput = prompt('Over welke afdeling wil je meer informatie? Kies uit: [marketing / sales / customer-service]');
-console.log(userInput);
+// Opdracht 2
+// const userInput = prompt('Over welke afdeling wil je meer informatie? Kies uit: [marketing / sales / customer-service]');
+// console.log(userInput);
+// switch (userInput) {
+//     case "marketing":
+//         console.log("Je koos " + userInput + ". " + departments.marketing.description);
+//         break;
+//     case "sales":
+//         console.log("Je koos " + userInput + ". " + departments.sales.description);
+//         break;
+//     case "customer-service":
+//         console.log("je koos " + userInput + ". " + departments["customer-service"].description);
+//         break;
+//     default:
+//         console.error("Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.")
+// }
+
+// Opdracht 3
+const userInput = prompt('Je koos marketing. Over welke functie wil je meer weten? Voer een getal tussen 0 en 3 in. \n0: ' + departments.marketing.jobs[0].title + '\n1: ' + departments.marketing.jobs[1].title + '\n2: ' + departments.marketing.jobs[2].title + '\n3: ' + departments.marketing.jobs[3].title)
 switch (userInput) {
-    case "marketing":
-        console.log("Je koos " + userInput + ". " + departments.marketing.description);
+    case "0":
+        console.log("Je koos " + departments.marketing.jobs[0].title + ". Een uitdagende rol! " + departments.marketing.jobs[0].description);
         break;
-    case "sales":
-        console.log("Je koos " + userInput + ". " + departments.sales.description);
+    case "1":
+        console.log("Je koos " + departments.marketing.jobs[1].title + ". Een uitdagende rol! " + departments.marketing.jobs[1].description);
         break;
-    case "customer-service":
-        console.log("je koos " + userInput + ". " + departments["customer-service"].description);
+    case "2":
+        console.log("Je koos " + departments.marketing.jobs[2].title + ". Een uitdagende rol! " + departments.marketing.jobs[2].description);
+        break;
+    case "3":
+        console.log("Je koos " + departments.marketing.jobs[3].title + ". Een uitdagende rol! " + departments.marketing.jobs[3].description);
         break;
     default:
-        console.error("Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.")
+        console.error ("Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.")
 }
