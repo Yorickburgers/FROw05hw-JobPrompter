@@ -82,18 +82,26 @@ const departments = {
 // Opdracht 2
 const userInputDepartment = prompt('Over welke afdeling wil je meer informatie? Kies uit: [marketing / sales / customer-service]');
 console.log(userInputDepartment);
-switch (userInputDepartment) {
-    case "marketing":
-        console.log("Je koos " + userInputDepartment + ". " + departments.marketing.description);
-        break;
-    case "sales":
-        console.log("Je koos " + userInputDepartment + ". " + departments.sales.description);
-        break;
-    case "customer-service":
-        console.log("je koos " + userInputDepartment + ". " + departments["customer-service"].description);
-        break;
-    default:
-        console.error("Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.")
+
+
+if (userInputDepartment === "marketing" || userInputDepartment === "customer-service" || userInputDepartment === "sales") {
+    switch (userInputDepartment) {
+        case "marketing":
+            console.log("Je koos " + userInputDepartment + ". " + departments.marketing.description);
+            document.getElementById('department-description').textContent = departments[userInputDepartment].description; // Opdracht 5b //
+            break;
+        case "sales":
+            console.log("Je koos " + userInputDepartment + ". " + departments.sales.description);
+            document.getElementById('department-description').textContent = departments[userInputDepartment].description; // Opdracht 5b //
+            break;
+        case "customer-service":
+            console.log("je koos " + userInputDepartment + ". " + departments["customer-service"].description);
+            document.getElementById('department-description').textContent = departments[userInputDepartment].description; // Opdracht 5b //
+            break;
+    }
+} else {
+    console.error("Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.")
+    document.getElementById('error-message').textContent = "Ongeldige keuze. Probeer het opnieuw door de pagina te verversen."; // Opdracht 5b //
 }
 
 // Opdracht 3
@@ -117,7 +125,12 @@ switch (userInputDepartment) {
 
 // Opdracht 4
 console.log(userInputDepartment + " is een leuke afdeling om te werken. Er werken op dit moment " + departments[userInputDepartment].numberOfEmployees + " medewerkers.");
-const userInputJob = prompt("Je koos " + userInputDepartment + ". Over welke functie wil je meer weten? Voer een getal tussen 0 en 3 in. \n0: " + departments[userInputDepartment].jobs[0].title + "\n1: " + departments[userInputDepartment].jobs[1].title + "\n2: " + departments[userInputDepartment].jobs[2].title + "\n3: " + departments[userInputDepartment].jobs[3].title);
+const userInputJob = prompt("Je koos " + userInputDepartment + `. Over welke functie wil je meer weten? Voer een getal tussen 0 en 3 in. 
+0: ` + departments[userInputDepartment].jobs[0].title + "\n1: " + departments[userInputDepartment].jobs[1].title + "\n2: " + departments[userInputDepartment].jobs[2].title + "\n3: " + departments[userInputDepartment].jobs[3].title);
+
+if (userInputJob >= 0 && userInputJob <= 3) {
+    document.getElementById('role-description').textContent = departments[userInputDepartment].jobs[userInputJob].description; // Opdracht 5b //
+    document.getElementById('role-title').textContent = departments[userInputDepartment].jobs[userInputJob].title; // Opdracht 5b //
 switch (userInputJob) {
     case "0":
         console.log("Je koos " + departments[userInputDepartment].jobs[0].title + ". Een uitdagende rol! " + departments[userInputDepartment].jobs[0].description);
@@ -131,10 +144,13 @@ switch (userInputJob) {
     case "3":
         console.log("Je koos " + departments[userInputDepartment].jobs[3].title + ". Een uitdagende rol! " + departments[userInputDepartment].jobs[3].description);
         break;
-    default:
-        console.error ("Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.");
 }
-
+} else {
+    console.error ("Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.");
+    document.getElementById('error-message').textContent = "Ongeldige keuze. Probeer het opnieuw door de pagina te verversen."; // Opdracht 5b //
+}
 // Opdracht 5
 // document.getElementById('role-title').textContent = 'Yorick!';
 // document.getElementById('department-description').textContent = 'Sushi!';
+
+// Ik heb uren geprobeerd om ervoor te zorgen dat als je marketing invoert, er dan een prompt komt met 5 banenopties, en dat dan een andere beslissingsstructuur ging gelden, waardoor je ook index-4 kon invoeren voor Marktonderzoeksanalist. Maar daar werd het hele zooitje onoverzichtelijk van en het stond ook niet in de opdracht dus ik heb het maar weer weggehaald. :)
